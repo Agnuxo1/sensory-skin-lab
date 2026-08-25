@@ -1,3 +1,6 @@
+<img width="1731" height="909" alt="exec-24c72637-15e4-433f-993e-802e6ecef72f" src="https://github.com/user-attachments/assets/aad7ef1d-bb72-47e5-ada9-525c85bd8c5d" />
+
+
 # Sensory Skin Lab
 
 Sensory Skin Lab is an experimental browser instrument for studying thin microcoils embedded in flexible robotic skin. It generates controlled audio-band excitation, acquires a receive coil through an audio interface, extracts response features, and supports empirical calibration for proximity and material-response experiments.
