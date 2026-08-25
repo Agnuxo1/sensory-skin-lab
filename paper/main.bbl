@@ -1,0 +1,209 @@
+\begin{thebibliography}{25}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Angulo~de Lafuente(2026)]{sensoryskin2026software}
+Francisco Angulo~de Lafuente.
+\newblock Sensory skin lab: Browser-based microcoil sensing research platform.
+\newblock Software repository, 2026.
+\newblock URL \url{https://github.com/Agnuxo1/sensory-skin-lab}.
+\newblock Accessed 2026-08-25.
+
+\bibitem[Bhirangi et~al.(2022)Bhirangi, Hellebrekers, Majidi, and
+  Gupta]{bhirangi2022reskin}
+Raunaq Bhirangi, Tess Hellebrekers, Carmel Majidi, and Abhinav Gupta.
+\newblock {ReSkin}: Versatile, replaceable, lasting tactile skins.
+\newblock In \emph{Proceedings of the 5th Conference on Robot Learning}, volume
+  164 of \emph{Proceedings of Machine Learning Research}, pages 587--597, 2022.
+\newblock URL \url{https://proceedings.mlr.press/v164/bhirangi22a.html}.
+
+\bibitem[Bhirangi et~al.(2024)Bhirangi, Pattabiraman, Erciyes, Cao,
+  Hellebrekers, and Pinto]{bhirangi2024anyskin}
+Raunaq Bhirangi, Venkatesh Pattabiraman, Enes Erciyes, Yifeng Cao, Tess
+  Hellebrekers, and Lerrel Pinto.
+\newblock {AnySkin}: Plug-and-play skin sensing for robotic touch.
+\newblock \emph{arXiv preprint arXiv:2409.08276}, 2024.
+\newblock \doi{10.48550/arXiv.2409.08276}.
+
+\bibitem[Boutry et~al.(2018)Boutry, Negre, Jorda, Vardoulis, Chortos, Khatib,
+  and Bao]{boutry2018direction}
+Clement~M. Boutry, Marlene Negre, Marc Jorda, Orestis Vardoulis, Alex Chortos,
+  Oussama Khatib, and Zhenan Bao.
+\newblock A hierarchically patterned, bioinspired e-skin able to detect the
+  direction of applied pressure for robotics.
+\newblock \emph{Science Robotics}, 3\penalty0 (24):\penalty0 eaau6914, 2018.
+\newblock \doi{10.1126/scirobotics.aau6914}.
+
+\bibitem[Charkhabi et~al.(2020)Charkhabi, Chan, Roy, Islam, Duffield, Jackson,
+  Bu, Kim, Hillier, Neihart, and Reuel]{wang2020resonant}
+Sadaf Charkhabi, Yee~Jher Chan, Subhanwit Roy, Md~Monirul Islam, Brock~B.
+  Duffield, Kyle~J. Jackson, Lujia Bu, Sang-Hwan Kim, Andrew~C. Hillier,
+  Nathan~M. Neihart, and Nigel~F. Reuel.
+\newblock Effects of fabrication materials and methods on flexible resonant
+  sensor signal quality.
+\newblock \emph{Extreme Mechanics Letters}, 41:\penalty0 101027, 2020.
+\newblock \doi{10.1016/j.eml.2020.101027}.
+
+\bibitem[Chortos et~al.(2016)Chortos, Liu, and Bao]{chortos2016prosthetic}
+Alex Chortos, Jia Liu, and Zhenan Bao.
+\newblock Pursuing prosthetic electronic skin.
+\newblock \emph{Nature Materials}, 15:\penalty0 937--950, 2016.
+\newblock \doi{10.1038/nmat4671}.
+
+\bibitem[Dahiya et~al.(2010)Dahiya, Metta, Valle, and
+  Sandini]{dahiya2010tactile}
+Ravinder~S. Dahiya, Giorgio Metta, Maurizio Valle, and Giulio Sandini.
+\newblock Tactile sensing---from humans to humanoids.
+\newblock \emph{IEEE Transactions on Robotics}, 26\penalty0 (1):\penalty0
+  1--20, 2010.
+\newblock \doi{10.1109/TRO.2009.2033627}.
+
+\bibitem[Dingley et~al.(2023)Dingley, Cox, and Soleimani]{dingley2023emskin}
+Gavin Dingley, Mackenzie Cox, and Manuchehr Soleimani.
+\newblock {EM-Skin}: An artificial robotic skin using magnetic inductance
+  tomography.
+\newblock \emph{IEEE Transactions on Instrumentation and Measurement},
+  72:\penalty0 1--9, 2023.
+\newblock \doi{10.1109/TIM.2023.3268481}.
+
+\bibitem[Fonseca et~al.(2023)Fonseca, Safeea, and Neto]{fonseca2023hybrid}
+Joao Fonseca, Mohammad Safeea, and Pedro Neto.
+\newblock A flexible piezoresistive/self-capacitive hybrid force and proximity
+  sensor to interface collaborative robots.
+\newblock \emph{IEEE Transactions on Industrial Informatics}, 19\penalty0
+  (3):\penalty0 3208--3218, 2023.
+\newblock \doi{10.1109/TII.2022.3174708}.
+
+\bibitem[Garcia~Nunez et~al.(2019)Garcia~Nunez, Manjakkal, and
+  Dahiya]{garcia2019energy}
+Carlos Garcia~Nunez, Libu Manjakkal, and Ravinder Dahiya.
+\newblock Energy autonomous electronic skin.
+\newblock \emph{npj Flexible Electronics}, 3\penalty0 (1):\penalty0 1, 2019.
+\newblock \doi{10.1038/s41528-018-0045-x}.
+
+\bibitem[Hammock et~al.(2013)Hammock, Chortos, Tee, Tok, and
+  Bao]{hammock2013evolution}
+Mallory~L. Hammock, Alex Chortos, Benjamin C.-K. Tee, Jeffrey B.-H. Tok, and
+  Zhenan Bao.
+\newblock The evolution of electronic skin ({E}-skin): A brief history, design
+  considerations, and recent progress.
+\newblock \emph{Advanced Materials}, 25\penalty0 (42):\penalty0 5997--6038,
+  2013.
+\newblock \doi{10.1002/adma.201302240}.
+
+\bibitem[Kim et~al.(2018)Kim, Chortos, Xu, Liu, Oh, Son, Kang, Foudeh, Zhu,
+  Lee, Niu, Liu, Pfattner, Bao, and Lee]{kim2018afferent}
+Y.~Kim, A.~Chortos, W.~Xu, Y.~Liu, J.~Y. Oh, D.~Son, J.~Kang, A.~M. Foudeh,
+  C.~Zhu, Y.~Lee, S.~Niu, J.~Liu, R.~Pfattner, Z.~Bao, and T.-W. Lee.
+\newblock A bioinspired flexible organic artificial afferent nerve.
+\newblock \emph{Science}, 360\penalty0 (6392):\penalty0 998--1003, 2018.
+\newblock \doi{10.1126/science.aao0098}.
+
+\bibitem[Maiolino et~al.(2013)Maiolino, Maggiali, Cannata, Metta, and
+  Natale]{maiolino2013capacitive}
+Perla Maiolino, Marco Maggiali, Giorgio Cannata, Giorgio Metta, and Lorenzo
+  Natale.
+\newblock A flexible and robust large scale capacitive tactile system for
+  robots.
+\newblock \emph{IEEE Sensors Journal}, 13\penalty0 (10):\penalty0 3910--3917,
+  2013.
+\newblock \doi{10.1109/JSEN.2013.2258149}.
+
+\bibitem[Mannsfeld et~al.(2010)Mannsfeld, Tee, Stoltenberg, Chen, Barman, Muir,
+  Sokolov, Reese, and Bao]{mannsfeld2010pressure}
+Stefan C.~B. Mannsfeld, Benjamin C.-K. Tee, Randall~M. Stoltenberg, Christopher
+  V. H.-H. Chen, Soumendra Barman, Beinn V.~O. Muir, Anatoliy~N. Sokolov, Colin
+  Reese, and Zhenan Bao.
+\newblock Highly sensitive flexible pressure sensors with microstructured
+  rubber dielectric layers.
+\newblock \emph{Nature Materials}, 9:\penalty0 859--864, 2010.
+\newblock \doi{10.1038/nmat2834}.
+
+\bibitem[Mittendorfer and Cheng(2011)]{mittendorfer2011humanoid}
+Philipp Mittendorfer and Gordon Cheng.
+\newblock Humanoid multimodal tactile-sensing modules.
+\newblock \emph{IEEE Transactions on Robotics}, 27\penalty0 (3):\penalty0
+  401--410, 2011.
+\newblock \doi{10.1109/TRO.2011.2106330}.
+
+\bibitem[Nguyen and Lee(2022)]{nguyen2022recent}
+Thi-Phuong Nguyen and Nae-Eung Lee.
+\newblock Recent development of flexible tactile sensors and their
+  applications.
+\newblock \emph{Sensors}, 22\penalty0 (1):\penalty0 50, 2022.
+\newblock \doi{10.3390/s22010050}.
+
+\bibitem[Pang et~al.(2018)Pang, Yang, Heng, Ye, Huang, Yang, and
+  Pang]{pang2018flexible}
+Guanglong Pang, Gao Yang, Wenhao Heng, Zhen Ye, Xiaoyan Huang, H.~Y. Yang, and
+  Zhibo Pang.
+\newblock Development of flexible robot skin for safe and natural human--robot
+  collaboration.
+\newblock \emph{Micromachines}, 9\penalty0 (11):\penalty0 576, 2018.
+\newblock \doi{10.3390/mi9110576}.
+
+\bibitem[Peng et~al.(2024)Peng, Wu, Wang, Wang, and Wang]{peng2024inductive}
+Yulian Peng, Houping Wu, Zhengyan Wang, Yufeng Wang, and Hongbo Wang.
+\newblock A soft inductive bimodal sensor for proprioception and tactile
+  sensing of soft machines.
+\newblock \emph{Soft Robotics}, 11\penalty0 (6):\penalty0 1055--1067, 2024.
+\newblock \doi{10.1089/soro.2023.0249}.
+
+\bibitem[Roberts et~al.(2021)Roberts, Zadan, and Majidi]{roberts2021soft}
+Patrick Roberts, Mariam Zadan, and Carmel Majidi.
+\newblock Soft tactile sensing skins for robotics.
+\newblock \emph{Current Robotics Reports}, 2:\penalty0 343--354, 2021.
+\newblock \doi{10.1007/s43154-021-00065-2}.
+
+\bibitem[Someya and Amagai(2019)]{someya2019smart}
+Takao Someya and Masayuki Amagai.
+\newblock Toward a new generation of smart skins.
+\newblock \emph{Nature Biotechnology}, 37:\penalty0 382--388, 2019.
+\newblock \doi{10.1038/s41587-019-0079-1}.
+
+\bibitem[Someya et~al.(2004)Someya, Sekitani, Iba, Kato, Kawaguchi, and
+  Sakurai]{someya2004large}
+Takao Someya, Tsuyoshi Sekitani, Shingo Iba, Yusaku Kato, Hiroshi Kawaguchi,
+  and Takayasu Sakurai.
+\newblock A large-area, flexible pressure sensor matrix with organic
+  field-effect transistors for artificial skin applications.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 101\penalty0
+  (27):\penalty0 9966--9970, 2004.
+\newblock \doi{10.1073/pnas.0401918101}.
+
+\bibitem[Tee et~al.(2015)Tee, Chortos, Berndt, Nguyen, Tom, McGuire, Lin, Tien,
+  Bae, Wang, Mei, Chou, Cui, Deisseroth, Ng, and Bao]{tee2015mechanoreceptor}
+Benjamin C.-K. Tee, Alex Chortos, Alexander Berndt, Amanda~K. Nguyen, Ari Tom,
+  Anna McGuire, Ziliang~C. Lin, Kevin Tien, Won-Gyu Bae, Huiliang Wang, Ping
+  Mei, Huiliang Chou, Bao Cui, Karl Deisseroth, Tse~Nga Ng, and Zhenan Bao.
+\newblock A skin-inspired organic digital mechanoreceptor.
+\newblock \emph{Science}, 350\penalty0 (6258):\penalty0 313--316, 2015.
+\newblock \doi{10.1126/science.aaa9306}.
+
+\bibitem[Wu et~al.(2024)Wu, Jiang, Yu, Zhou, Jiao, and Jin]{wu2024proximity}
+Bingwei Wu, Ting Jiang, Zhongxiang Yu, Qihui Zhou, Jian Jiao, and Ming~Liang
+  Jin.
+\newblock Proximity sensing electronic skin: Principles, characteristics, and
+  applications.
+\newblock \emph{Advanced Science}, 11\penalty0 (13):\penalty0 e2308560, 2024.
+\newblock \doi{10.1002/advs.202308560}.
+
+\bibitem[Xu et~al.(2023)Xu, Solomon, and Gao]{xu2023ai}
+Kun Xu, Samuel Solomon, and Wei Gao.
+\newblock Artificial intelligence-powered electronic skin.
+\newblock \emph{Nature Machine Intelligence}, 5:\penalty0 1344--1355, 2023.
+\newblock \doi{10.1038/s42256-023-00760-z}.
+
+\bibitem[Yan et~al.(2021)Yan, Hu, Yang, Yuan, Song, Pan, and
+  Shen]{yan2021magnetic}
+Youcan Yan, Zhe Hu, Zhengbao Yang, Wenzhen Yuan, Chaoyang Song, Jia Pan, and
+  Yajing Shen.
+\newblock Soft magnetic skin for super-resolution tactile sensing with force
+  self-decoupling.
+\newblock \emph{Science Robotics}, 6\penalty0 (51):\penalty0 eabc8801, 2021.
+\newblock \doi{10.1126/scirobotics.abc8801}.
+
+\end{thebibliography}
