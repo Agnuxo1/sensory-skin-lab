@@ -39,7 +39,7 @@ See [docs/HARDWARE.md](docs/HARDWARE.md) and [docs/EXPERIMENTAL_PROTOCOL.md](doc
 
 ## Research preprint
 
-The repository includes an English, arXiv-oriented methods preprint: [Audio-Frequency Microcoil Sensing for Proximity and Material-Response Characterization in Flexible Robotic Skins](paper/sensory_skin_lab_preprint.pdf). Its LaTeX source, BibTeX database, compiled bibliography, and upload-ready source archive are in [`paper/`](paper/). The manuscript treats the existing observations as exploratory and defines a prospective controlled validation study; it does not report an invented performance dataset.
+The repository includes an English, arXiv-oriented methods preprint: [Audio-Frequency Microcoil Sensing for Proximity, Material Response, and Contact Pressure in Flexible Robotic Skins](paper/sensory_skin_lab_preprint.pdf). Its LaTeX source, BibTeX database, compiled bibliography, and upload-ready source archive are in [`paper/`](paper/). The revised manuscript proposes a lightweight multitask-AI architecture spanning target response, 0--15 cm proximity, contact, normal force, contact area, and average pressure. It treats the existing observations as exploratory and defines a prospective controlled validation study; it does not report an invented performance dataset.
 
 ## Run locally
 

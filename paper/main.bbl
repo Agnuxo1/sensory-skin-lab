@@ -1,4 +1,4 @@
-\begin{thebibliography}{25}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -36,6 +36,12 @@ Clement~M. Boutry, Marlene Negre, Marc Jorda, Orestis Vardoulis, Alex Chortos,
   direction of applied pressure for robotics.
 \newblock \emph{Science Robotics}, 3\penalty0 (24):\penalty0 eaau6914, 2018.
 \newblock \doi{10.1126/scirobotics.aau6914}.
+
+\bibitem[Caruana(1997)]{caruana1997multitask}
+Rich Caruana.
+\newblock Multitask learning.
+\newblock \emph{Machine Learning}, 28\penalty0 (1):\penalty0 41--75, 1997.
+\newblock \doi{10.1023/A:1007379606734}.
 
 \bibitem[Charkhabi et~al.(2020)Charkhabi, Chan, Roy, Islam, Duffield, Jackson,
   Bu, Kim, Hillier, Neihart, and Reuel]{wang2020resonant}
@@ -93,6 +99,54 @@ Mallory~L. Hammock, Alex Chortos, Benjamin C.-K. Tee, Jeffrey B.-H. Tok, and
 \newblock \emph{Advanced Materials}, 25\penalty0 (42):\penalty0 5997--6038,
   2013.
 \newblock \doi{10.1002/adma.201302240}.
+
+\bibitem[Hellebrekers et~al.(2020)Hellebrekers, Chang, Chin, Ford, Kroemer, and
+  Majidi]{hellebrekers2020force}
+Tess Hellebrekers, Nadine Chang, Keene Chin, Michael~J. Ford, Oliver Kroemer,
+  and Carmel Majidi.
+\newblock Soft magnetic tactile skin for continuous force and location
+  estimation using neural networks.
+\newblock \emph{IEEE Robotics and Automation Letters}, 5\penalty0 (3):\penalty0
+  3892--3898, 2020.
+\newblock \doi{10.1109/LRA.2020.2983707}.
+
+\bibitem[{International Electrotechnical Commission}(2019)]{iec80601}
+{International Electrotechnical Commission}.
+\newblock \emph{{IEC 80601-2-78:2019}: Medical Electrical
+  Equipment---Particular Requirements for Basic Safety and Essential
+  Performance of Medical Robots for Rehabilitation, Assessment, Compensation or
+  Alleviation}.
+\newblock IEC, 2019.
+\newblock URL \url{https://webstore.iec.ch/en/publication/26004}.
+
+\bibitem[{International Organization for Standardization}(2014)]{iso13482}
+{International Organization for Standardization}.
+\newblock \emph{{ISO 13482:2014}: Robots and Robotic Devices---Safety
+  Requirements for Personal Care Robots}.
+\newblock ISO, 2014.
+\newblock URL \url{https://www.iso.org/standard/53820.html}.
+
+\bibitem[{International Organization for Standardization}(2017)]{iso7743}
+{International Organization for Standardization}.
+\newblock \emph{{ISO 7743:2017}: Rubber, Vulcanized or
+  Thermoplastic---Determination of Compression Stress-Strain Properties}.
+\newblock ISO, 2017.
+\newblock URL \url{https://www.iso.org/standard/72784.html}.
+
+\bibitem[{International Organization for Standardization}(2019)]{isotr23482}
+{International Organization for Standardization}.
+\newblock \emph{{ISO/TR 23482-2:2019}: Robotics---Application of {ISO
+  13482}---Part 2: Application Guidelines}.
+\newblock ISO, 2019.
+\newblock URL \url{https://www.iso.org/standard/71627.html}.
+
+\bibitem[Kendall et~al.(2018)Kendall, Gal, and Cipolla]{kendall2018uncertainty}
+Alex Kendall, Yarin Gal, and Roberto Cipolla.
+\newblock Multi-task learning using uncertainty to weigh losses for scene
+  geometry and semantics.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 7482--7491, 2018.
+\newblock \doi{10.1109/CVPR.2018.00781}.
 
 \bibitem[Kim et~al.(2018)Kim, Chortos, Xu, Liu, Oh, Son, Kang, Foudeh, Zhu,
   Lee, Niu, Liu, Pfattner, Bao, and Lee]{kim2018afferent}
@@ -157,6 +211,15 @@ Patrick Roberts, Mariam Zadan, and Carmel Majidi.
 \newblock Soft tactile sensing skins for robotics.
 \newblock \emph{Current Robotics Reports}, 2:\penalty0 343--354, 2021.
 \newblock \doi{10.1007/s43154-021-00065-2}.
+
+\bibitem[Seo et~al.(2025)Seo, Nakamura, and Bajcsy]{seo2025unisafe}
+Junwon Seo, Kensuke Nakamura, and Andrea Bajcsy.
+\newblock Uncertainty-aware latent safety filters for avoiding
+  out-of-distribution failures.
+\newblock In \emph{Proceedings of the 9th Conference on Robot Learning}, volume
+  305 of \emph{Proceedings of Machine Learning Research}, pages 4442--4472,
+  2025.
+\newblock URL \url{https://proceedings.mlr.press/v305/seo25a.html}.
 
 \bibitem[Someya and Amagai(2019)]{someya2019smart}
 Takao Someya and Masayuki Amagai.

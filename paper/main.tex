@@ -39,19 +39,19 @@
 \setlength{\headheight}{14pt}
 \titleformat{\section}{\large\bfseries\color{navy}}{\thesection}{0.6em}{}
 \titleformat{\subsection}{\normalsize\bfseries\color{teal}}{\thesubsection}{0.55em}{}
-\setlist{nosep,leftmargin=*}
+\setlist[itemize,enumerate]{nosep,leftmargin=*}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\dataset}{\textsc{SSkin-Pilot}}
 
-\title{\vspace{-1.2cm}\textbf{Audio-Frequency Microcoil Sensing for Proximity and Material-Response Characterization in Flexible Robotic Skins}\\[0.45em]
+\title{\vspace{-1.2cm}\textbf{Audio-Frequency Microcoil Sensing for Proximity, Material Response, and Contact Pressure in Flexible Robotic Skins}\\[0.45em]
 \large A Research Platform, Exploratory Evidence Audit, and Prospective Validation Protocol}
 \author{Francisco Angulo de Lafuente\\\small Independent Researcher, Spain}
-\date{Preprint --- 25 August 2026}
+\date{Revised preprint --- 25 August 2026}
 
 \begin{document}
 \maketitle
 \begin{abstract}
-Robotic skin requires compliant, distributed sensing that can support both gentle pre-contact interaction and contact-level material response. This paper presents \emph{Sensory Skin Lab}, an open browser-based research platform for evaluating fine copper microcoils intended for encapsulation in silicone-like flexible substrates. The system generates audio-band continuous or gated excitation, acquires a receive channel through a commodity audio interface, extracts amplitude, phase, transient, noise, and saturation features, and provides transparent empirical calibration for target response and \SIrange{0}{15}{\centi\metre} proximity. We position the concept relative to capacitive electronic skin, magnetic tactile skin, flexible inductive sensors, and magnetic-induction tomography. We then audit a set of uncontrolled pilot observations: strong response to a nearby human hand/body, weaker response to a ferrous pan, little apparent response to wood or plastic, persistence through an approximately \SI{5}{\centi\metre} wooden barrier, and dependence on software excitation settings even when the physical output path was disconnected. These observations demonstrate a detectable signal but do \emph{not} establish electromagnetic material discrimination or through-wall sensing, because body capacitance, codec DAC--ADC leakage, common power/ground modulation, automatic gain control, and motion remain viable explanations. Accordingly, no retrospective accuracy or range claim is made. The primary contribution is a falsifiable measurement model and a preregistered-style prospective protocol using isolated transmit and receive chains, non-conductive positioning, randomized blocked trials, negative controls, held-out objects, and explicit success thresholds. The resulting platform is suitable for disciplined feasibility studies on low-cost microcoil arrays while preserving a clear boundary between demonstration, hypothesis, and validated robotic-safety performance.
+Robotic skin requires compliant, distributed sensing that can support both gentle pre-contact interaction and contact-level material response. This paper presents \emph{Sensory Skin Lab}, an open browser-based research platform for evaluating fine copper microcoils intended for encapsulation in silicone-like flexible substrates. The system generates audio-band continuous or gated excitation, acquires a receive channel through a commodity audio interface, extracts amplitude, phase, transient, noise, and saturation features, and provides transparent empirical calibration for target response and \SIrange{0}{15}{\centi\metre} proximity. We position the concept relative to capacitive electronic skin, magnetic tactile skin, flexible inductive sensors, and magnetic-induction tomography. We then audit a set of uncontrolled pilot observations: strong response to a nearby human hand/body, weaker response to a ferrous pan, little apparent response to wood or plastic, persistence through an approximately \SI{5}{\centi\metre} wooden barrier, and dependence on software excitation settings even when the physical output path was disconnected. These observations demonstrate a detectable signal but do \emph{not} establish electromagnetic material discrimination or through-wall sensing, because body capacitance, codec DAC--ADC leakage, common power/ground modulation, automatic gain control, and motion remain viable explanations. Accordingly, no retrospective accuracy or range claim is made. We further formulate a continuous proximity--contact--force--pressure transducer in which elastomer compression changes microcoil geometry and coupling, and propose a lightweight uncertainty-aware multitask model that jointly estimates target class, distance, contact state, normal force, contact area, and pressure. The primary contribution is a falsifiable measurement model and a preregistered-style prospective protocol using isolated transmit and receive chains, instrumented indentation, non-conductive positioning, randomized blocked trials, negative controls, held-out objects and skin batches, and explicit success thresholds. The resulting platform is suitable for disciplined feasibility studies on low-cost microcoil arrays while preserving a clear boundary between demonstration, hypothesis, and validated robotic-safety performance.
 \end{abstract}
 
 \noindent\textbf{Keywords:} electronic skin; robotic skin; microcoil; inductive sensing; proximity sensing; magnetic induction; human--robot interaction; Web Audio; reproducible experimentation.
@@ -64,12 +64,13 @@ Human skin integrates dense mechanoreception with compliance, distributed geomet
 
 This work investigates whether fine, inexpensive copper coils embedded in a compliant skin can form an additional sensing modality. The motivating vision is not a single ``metal detector'' attached to a robot, but a distributed array whose frequency-dependent electromagnetic response may complement force, vision, and joint-torque sensing. Inductive approaches are attractive because the conductors can be sealed, interrogation can be contactless, and coil geometry is compatible with flexible circuits or enamelled wire. Their interpretation is nevertheless difficult. The measured voltage may combine true target interaction with direct transmitter--receiver coupling, electric-field coupling to a human body, mechanical deformation of the coil, acoustic microphonics, and electronic leakage inside the audio interface.
 
-We make four contributions:
+We make five contributions:
 \begin{enumerate}
   \item an open, resource-conscious browser instrument for controlled audio-frequency excitation, feature extraction, calibration, and CSV logging;
   \item a physics-based measurement model that exposes alternative signal paths rather than treating any response as target detection;
   \item an explicit evidence audit of the existing pilot observations, separating observation from interpretation; and
   \item a prospective, preregistered-style protocol for evaluating proximity estimation and three-way target-response discrimination without operator-body leakage.
+  \item a physics-constrained multitask-AI design and calibration protocol for the final centimetre of approach, contact detection, normal-force estimation, contact-area inference, and pressure mapping.
 \end{enumerate}
 
 \section{Related Work and Research Gap}
@@ -83,6 +84,8 @@ Magnetic skins can infer contact force from deformation of magnets or magnetized
 
 Flexible coils offer another route. Peng \emph{et al.} combined a planar coil, porous ferrite, and soft conductive film, using two interrogation frequencies to decouple bending and force \citep{peng2024inductive}. Dingley \emph{et al.} used mutual-inductance arrays and tomography to reconstruct contact-related changes in an engineered skin medium \citep{dingley2023emskin}. Fabrication materials and geometry materially affect resonant-sensor quality \citep{wang2020resonant}. These studies establish that flexible inductive sensing is scientifically credible, but they do not validate arbitrary classification of remote human, metallic, and insulating targets using a commodity audio codec.
 
+Learning-based tactile skins show that a compliant medium can encode force and contact location in a distributed field response. Hellebrekers \emph{et al.} used a soft magnetic composite and neural network for continuous force and location estimation \citep{hellebrekers2020force}; this is evidence for the general calibration strategy, not evidence that the present microcoil achieves the same performance. Multitask learning can share representations between related classification and regression targets \citep{caruana1997multitask}, while task-dependent uncertainty provides a principled way to balance losses with different units \citep{kendall2018uncertainty}. These methods motivate a single model spanning approach and contact, provided that force and pressure labels come from independent reference instruments.
+
 \begin{table*}[t]
 \centering\small
 \caption{Representative state of the art and the gap addressed by this work. Reported capabilities belong to the cited systems; they are not performance claims for Sensory Skin Lab.}
@@ -93,7 +96,7 @@ Approach & Transduction & Strength & Principal confound/limitation & Relation to
 \midrule
 Large-area capacitive skin \citep{maiolino2013capacitive} & Capacitance & Scalable, compliant tactile coverage & Parasitics, grounding, wiring & Baseline architecture for distributed skin\\
 Hybrid proximity/force \citep{fonseca2023hybrid} & Self-capacitance + piezoresistance & Pre-contact and contact in one layer & EMI and actuator-dependent errors & Closest functional target; motivates controls\\
-ReSkin/AnySkin \citep{bhirangi2022reskin,bhirangi2024anyskin} & Magnetic elastomer + magnetometer & Replaceable, learnable tactile interface & Primarily contact; learned domain shift & Reference for dataset and transfer design\\
+ReSkin / AnySkin \citep{bhirangi2022reskin,bhirangi2024anyskin} & Magnetic elastomer + magnetometer & Replaceable, learnable tactile interface & Primarily contact; learned domain shift & Reference for dataset and transfer design\\
 Soft magnetic skin \citep{yan2021magnetic} & Magnetized film + Hall array & Multi-axis force and learned resolution & Requires engineered magnetic layer & Demonstrates field-based tactile inference\\
 Soft inductive bimodal sensor \citep{peng2024inductive} & Coil + ferrite + conductor & Two-wire bending/force decoupling & Engineered target layers; contact regime & Direct evidence for flexible-coil sensing\\
 EM-skin tomography \citep{dingley2023emskin} & Mutual-inductance coil array & Spatial reconstruction and multi-touch & Dedicated multichannel hardware & Array-scale route beyond one coil\\
@@ -104,7 +107,7 @@ EM-skin tomography \citep{dingley2023emskin} & Mutual-inductance coil array & Sp
 
 The research question is therefore:
 \begin{quote}
-\emph{Can audio-frequency microcoil elements embedded in compliant substrates provide repeatable, separable feature signatures for human/biological, metallic, and non-conductive targets while supporting calibrated \SIrange{0}{15}{\centi\metre} proximity estimation under controlled suppression of capacitive, acoustic, and electronic-crosstalk confounds?}
+\emph{Can audio-frequency microcoil elements embedded in compliant substrates provide repeatable, separable feature signatures for human/biological, metallic, and non-conductive targets, support calibrated \SIrange{0}{15}{\centi\metre} proximity, and use contact-induced deformation to estimate normal force and average pressure under controlled suppression of capacitive, acoustic, mechanical-history, and electronic-crosstalk confounds?}
 \end{quote}
 
 \section{Physical Basis and Measurement Model}
@@ -180,6 +183,23 @@ where $h_{\mathrm{em}}$ is target-dependent electromagnetic coupling, $h_{\mathr
 \label{fig:architecture}
 \end{figure*}
 
+\subsection{Contact mechanics and pressure observability}
+Once the remaining gap closes and the target indents the encapsulant, the sensor enters a second physical regime. Let $h_0$ be unloaded skin thickness and $u(t)$ indentation. Engineering compressive strain is $\varepsilon(t)=u(t)/h_0$. The local normal force and area-averaged pressure satisfy
+\begin{equation}
+F_n(t)=\int_{A_c(t)}p(\mathbf{r},t)\,\mathrm{d}A,\qquad \bar p(t)=\frac{F_n(t)}{A_c(t)},
+\label{eq:pressure}
+\end{equation}
+where $A_c$ is the instantaneous contact area. A single scalar coil response cannot uniquely determine both $F_n$ and $A_c$ without extra geometry, an array, or a learned prior. Consequently, a single cell can report force or \emph{average} pressure only for calibrated indenters or a constrained effective area; spatial pressure requires multiple cells and contact-area reconstruction.
+
+Compression can change the coil's area, turn spacing, distance to a target, parasitic capacitance, resistance, and mutual inductance. A useful local model is
+\begin{equation}
+\Delta\mathbf{z}(t)=\mathcal{H}\!\left(\mathcal{T},d(t),\varepsilon(t),\dot\varepsilon(t),T(t),\mathbf{s}(t);\boldsymbol\theta_{\mathrm{skin}}\right)+\boldsymbol\eta(t),
+\label{eq:contactmodel}
+\end{equation}
+where $\mathbf{s}$ is deformation history and $\boldsymbol\theta_{\mathrm{skin}}$ includes thickness, hardness, batch, cure, coil geometry, and compression response. Density and a nominal elastic modulus are insufficient: silicone and latex-like elastomers exhibit nonlinear stress--strain response, hysteresis, creep, stress relaxation, temperature dependence, and permanent-set or ageing effects. Compression specimens should be characterized independently using a defined procedure such as ISO~7743 \citep{iso7743}; the assembled skin then requires its own cyclic calibration.
+
+The proposed operating continuum has three regimes: (i) \emph{pre-contact}, in which distance and target-response features dominate; (ii) \emph{transition}, approximately the final centimetre in the present hypothesis, in which field response and initial deformation coexist; and (iii) \emph{contact}, in which deformation-sensitive features support force inference. The regime boundaries are sensor- and target-specific and must be learned from synchronized displacement and load references rather than fixed retrospectively.
+
 \section{Sensory Skin Lab Platform}
 \subsection{Design goals and implementation}
 Sensory Skin Lab is a client-side application implemented with TypeScript, React, and the Web Audio API \citep{sensoryskin2026software}. Audio samples are processed locally in an \texttt{AudioWorklet}; the application does not upload audio. The architecture was chosen for reproducibility and accessibility on commodity laptops and mobile browsers, not for metrology-grade timing. The interface supports:
@@ -235,6 +255,76 @@ The first physical demonstrator should use enamelled copper wire or a flexible p
 \label{fig:stack}
 \end{figure}
 
+\section{Proposed Multitask Perception System}
+\label{sec:ai}
+\subsection{Outputs and operational definitions}
+The intended skin is not a binary detector. Each cell or local array should produce a synchronized perceptual state
+\begin{equation}
+\hat{\mathbf{y}}_t=\{\hat c_t,\hat d_t,\hat q_t,\hat F_{n,t},\hat A_{c,t},\hat p_t,\hat{\mathbf{u}}_t\},
+\end{equation}
+where $c$ is target-response class, $d$ distance, $q$ contact probability, $F_n$ normal force, $A_c$ contact area, $p$ average pressure, and $\mathbf{u}$ contains predictive uncertainty and an out-of-distribution (OOD) score. ``Human'' is an operational response class learned from consented examples and validated phantoms, not a claim of biological identity. ``Non-conductive'' means no separable conductive/magnetic response within the validated operating domain, not proof of composition.
+
+\begin{table*}[t]
+\centering\small
+\caption{Proposed outputs, independent labels, metrics, and validity gates. All targets are prospective.}
+\label{tab:aioutputs}
+\begin{tabularx}{\textwidth}{@{}p{2.2cm}p{3.1cm}X p{3.0cm}@{}}
+\toprule
+Output & Reference label & Reported metric & Gate for use\\
+\midrule
+Target response & Material record; saline phantom or consented adult hand & Object-grouped macro-$F_1$, sensitivity, specificity, calibration & Reject if OOD or dummy-load leakage is class-informative\\
+Distance, 0--15 cm & Traceable translation stage & Median/95th-percentile absolute error; monotonicity violations & Pre-contact only; target-specific calibration valid\\
+Contact state & Load cell threshold plus displacement/optical event & Balanced accuracy, false-contact and missed-contact rates, detection latency & Two independent references agree\\
+Normal force & Calibrated load cell & MAE, normalized RMSE, 95th-percentile absolute error, hysteresis & Contact only; skin batch and temperature in domain\\
+Contact area & Machine-vision footprint or known flat indenter & Area IoU or relative area error & Spatial array or constrained indenter geometry\\
+Average pressure & $F_n/A_c$ from independent references & MAE and normalized RMSE by indenter and material & Both force and area gates pass\\
+Uncertainty / OOD & Held-out people, objects, skin batches, temperatures, faults & Coverage, selective risk, false-reject rate & Unsafe/unknown maps to conservative robot action\\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{Input representation and model architecture}
+The input is a short causal sequence of raw or demodulated RX data synchronized with commanded TX current, plus temperature and cell identity. The feature tensor contains multi-frequency in-phase and quadrature components, amplitude residual, phase displacement, transient energies, harmonics, broadband noise, clipping, adjacent-cell coupling, and temporal derivatives. A measured TX-current reference is essential; commanded software amplitude is not a substitute.
+
+A low-resource implementation uses a compact one-dimensional temporal convolutional network (TCN) or gated recurrent encoder shared by six heads. The class and contact heads use calibrated classification losses; distance, force, and area heads use robust regression losses; pressure is computed through the physics layer $\hat p=\hat F_n/(\hat A_c+\epsilon)$ rather than independently whenever area is observable. Task-uncertainty weighting follows the multitask principle of \citet{kendall2018uncertainty}:
+\begin{equation}
+\mathcal{L}=\sum_{k\in\mathcal{R}}\left(\frac{\mathcal{L}_k}{2\sigma_k^2}+\log\sigma_k\right)+\sum_{k\in\mathcal{C}}\left(\frac{\mathcal{L}_k}{\sigma_k^2}+\log\sigma_k\right)+\lambda_{\mathrm{phys}}\mathcal{L}_{\mathrm{phys}},
+\label{eq:multiloss}
+\end{equation}
+where $\mathcal{R}$ and $\mathcal{C}$ denote regression and classification tasks. The physics-consistency term penalizes negative force/area, pressure--force inconsistency, a nonzero pressure prediction before contact, discontinuity at the regime transition, and implausible high-frequency force changes relative to the calibrated mechanical bandwidth.
+
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[font=\small,node distance=6mm and 9mm,
+ io/.style={draw=teal,rounded corners,fill=teal!8,align=center,text width=27mm,minimum height=11mm},
+ core/.style={draw=navy,rounded corners,fill=navy!7,align=center,text width=31mm,minimum height=13mm},
+ head/.style={draw=amber,rounded corners,fill=amber!10,align=center,text width=22mm,minimum height=9mm},
+ safe/.style={draw=redx,rounded corners,fill=redx!7,align=center,text width=30mm,minimum height=11mm},
+ arr/.style={-{Latex[length=2mm]},thick}]
+\node[io] (rx) {RX waveform and\\multi-frequency features};
+\node[io,below=of rx] (ref) {TX current, temperature,\\cell and skin metadata};
+\node[core,right=14mm of $(rx)!0.5!(ref)$] (enc) {Causal lightweight\\temporal encoder};
+\node[head,right=of enc,yshift=23mm] (class) {Target-response\\class};
+\node[head,right=of enc,yshift=11.5mm] (dist) {Pre-contact\\distance};
+\node[head,right=of enc] (contact) {Contact state\\and transition};
+\node[head,right=of enc,yshift=-11.5mm] (force) {Normal force};
+\node[head,right=of enc,yshift=-23mm] (area) {Contact area};
+\node[core,right=13mm of contact] (physics) {Regime gate and\\physics layer\\$\hat p=\hat F_n/\hat A_c$};
+\node[safe,right=of physics] (unc) {Calibrated uncertainty,\\OOD rejection and\\conservative state};
+\draw[arr] (rx)--(enc); \draw[arr] (ref)--(enc);
+\foreach \n in {class,dist,contact,force,area}{\draw[arr] (enc)--(\n); \draw[arr] (\n)--(physics);}
+\draw[arr] (physics)--(unc);
+\end{tikzpicture}}
+\caption{Proposed shared-encoder multitask system. The pressure output is gated by independently validated contact, force, and area estimates. Unknown conditions do not receive an optimistic class or force value.}
+\label{fig:ai}
+\end{figure*}
+
+\subsection{Uncertainty, rejection, and safe deployment}
+Model confidence must not be interpreted as safety. Use deep ensembles or another validated epistemic-uncertainty method, calibrate classification probabilities on a validation set, and construct prediction intervals for distance and force. Conformal calibration may provide empirical coverage under exchangeability, but distribution shift can invalidate that premise. Recent uncertainty-aware robotic safety filters illustrate why OOD states must be detected rather than forced into a known label \citep{seo2025unisafe}. At runtime, high uncertainty, clipping, missing cells, temperature excursions, non-monotonic distance, or unrecognized skin metadata produce an \emph{unknown/degraded} state that commands reduced speed or a stop through an independent safety controller.
+
+The software should deploy two layers: a transparent nearest-centroid or regularized linear baseline for diagnostics, and the frozen compact multitask model for validated operation. Quantization and bounded causal windows support phone-class or embedded hardware. The model artifact must be versioned with training-data hashes, sensor geometry, skin formulation, preprocessing, calibration temperatures, and approved operating domain.
+
 \section{Exploratory Pilot Evidence Audit}
 \label{sec:pilot}
 \subsection{Provenance}
@@ -284,7 +374,7 @@ The disconnected-output observation increases the plausibility of H2--H4 and pre
 \section{Prospective Validation Protocol}
 \label{sec:protocol}
 \subsection{Status and hypotheses}
-This section is a \emph{prospective protocol written after the exploratory observations and before a confirmatory dataset}. It is not an external registration and must receive a timestamped public registration before confirmatory acquisition. The primary hypothesis is that a leakage-controlled microcoil system achieves held-out-object macro-$F_1\geq0.75$ for three response classes (human/biological, metallic, non-conductive). Performance $<0.50$ is a failure; $0.50\leq F_1<0.75$ is inconclusive. The secondary hypothesis is a monotonically modelable \SIrange{0}{15}{\centi\metre} response with median absolute distance error $\leq\SI{2}{\centi\metre}$ within target class. These thresholds are engineering goals, not current results.
+This section is a \emph{prospective protocol written after the exploratory observations and before a confirmatory dataset}. It is not an external registration and must receive a timestamped public registration before confirmatory acquisition. The primary hypothesis is that a leakage-controlled microcoil system achieves held-out-object macro-$F_1\geq0.75$ for three response classes (human/biological, metallic, non-conductive). Performance $<0.50$ is a failure; $0.50\leq F_1<0.75$ is inconclusive. Secondary hypotheses are: (i) a monotonically modelable \SIrange{0}{15}{\centi\metre} response with median absolute distance error $\leq\SI{2}{\centi\metre}$ within target class; (ii) contact balanced accuracy $\geq0.95$; (iii) normal-force normalized RMSE $\leq10\%$ of a preregistered full-scale range and 95th-percentile absolute error $\leq10\%$ full scale; and (iv) average-pressure normalized RMSE $\leq15\%$ for independently measured contact area. These are prospective engineering goals, not current results or human-injury thresholds.
 
 \subsection{Hardware and isolation controls}
 Use two acquisition configurations:
@@ -298,6 +388,13 @@ The minimum controls are: (i) TX coil replaced by an equal electrical dummy load
 Use at least five held-out exemplars per class. Suggested metallic targets include steel, aluminium, copper, and stainless-steel coupons normalized by area and thickness. Non-conductive controls include dry wood, acrylic, polyethylene, glass, and silicone. Biological presentations may use the operator's hand only after electrical safety review; saline phantoms with controlled conductivity provide a safer and more reproducible intermediate control. Objects are mounted on a non-conductive translation fixture at \SIlist{0;2;5;10;15}{\centi\metre}, with \SI{20}{\centi\metre} as an empty-field control. The operator remains at a fixed distance behind an electrostatic screen or leaves the acquisition zone.
 
 Within each day and sensor bend state, randomize target identity, distance, orientation, excitation frequency (\SIlist{120;250;500;1000}{\hertz}), and mode. Acquire at least ten independent approaches per condition on three days. A trial is independent only if the target returns to the home position and a new baseline-stability test passes. Training, calibration, and held-out test objects are split by object identity, never by adjacent time windows from the same presentation.
+
+\subsection{Instrumented contact and pressure calibration}
+Mount the skin coupon over a rigid backing on a motorized linear stage. Use a calibrated load cell coaxial with the indenter, traceable displacement, and synchronized imaging of the contact footprint. Begin with circular flat-ended non-conductive indenters of several known areas; then introduce compliant, conductive, and anatomically representative phantoms. Approach from at least \SI{15}{\milli\metre}, cross first contact at controlled speed, load to the preregistered safe fixture limit, hold for creep characterization, and unload. Randomize speed, peak force, dwell, indenter area, target class, and cell location.
+
+Each calibration block must cover loading and unloading, at least three approach speeds, at least three temperatures spanning the intended environment, multiple cured skin coupons, and flat versus bent mounting. Record creep during 1, 10, and \SI{60}{\second} dwells; report zero return, hysteresis-loop area, relaxation, repeatability, and drift. A durability study repeats the locked waveform over a preregistered cycle count and reevaluates the held-out calibration. Training/test splits are grouped simultaneously by physical target, person/phantom, skin batch, cell location, and day. No windows from the same loading cycle may cross a split.
+
+For an array, infer $A_c$ from calibrated active-cell footprints or an external camera during development, then compute $\bar p=F_n/A_c$. Report per-cell average pressure and integrated array force $\hat F_{\mathrm{array}}=\sum_i\hat p_iA_i$. A single isolated coil tested with a known flat indenter may estimate force and average pressure for that geometry, but it cannot support a general pressure map claim.
 
 \begin{figure*}[t]
 \centering
@@ -328,11 +425,13 @@ Exclude a trial only for: ADC clipping above 0.1\% of samples; TX-current deviat
 \subsection{Statistical analysis}
 All preprocessing is fitted on training data. Continuous features are robust-standardized using the training median and interquartile range. The transparent baseline is nearest centroid; regularized multinomial logistic regression is a secondary model. Hyperparameters are selected by grouped cross-validation, with group equal to physical target identity and acquisition day.
 
-Report the confusion matrix, macro-$F_1$, balanced accuracy, class sensitivity/specificity, calibration error, and 95\% stratified bootstrap confidence intervals. Compare the locked classifier with label permutation ($10{,}000$ permutations). Distance is evaluated by mean and median absolute error, bias, monotonicity violations, and Bland--Altman limits. A mixed-effects model assesses mechanism:
+Report the confusion matrix, macro-$F_1$, balanced accuracy, class sensitivity/specificity, calibration error, and 95\% stratified bootstrap confidence intervals. Compare the locked classifier with label permutation ($10{,}000$ permutations). Distance is evaluated by mean and median absolute error, bias, monotonicity violations, and Bland--Altman limits. Contact is scored both per trial and by detection latency. Force, area, and pressure are reported with MAE, RMSE, normalized RMSE, 95th-percentile absolute error, bias, loading/unloading hysteresis, creep, and prediction-interval coverage. Results are stratified by speed, temperature, skin batch, bend state, target class, and contact area. A mixed-effects model assesses mechanism:
 \begin{equation}
 z_{ijkl}=\beta_0+\beta_1\log d_i+\beta_2 f_j+\beta_3 c_k+\beta_4 m_l+(1|\text{object})+(1|\text{day})+\epsilon,
 \end{equation}
 where $d$ is distance, $f$ frequency, $c$ target class, and $m$ acquisition mode. Interactions $f\times c$ and chain$\times$c test whether spectral separation survives hardware isolation. Effect sizes and confidence intervals take priority over $p$-values.
+
+Compare four locked models: nearest centroid, regularized linear/logistic baselines, separate single-task compact networks, and the proposed shared multitask network. The multitask claim is supported only if it improves at least one preregistered primary output without violating non-inferiority margins on the others. Evaluate ablations for TX reference, temperature, history, physics loss, uncertainty weighting, and adjacent cells. Selective-risk curves must show error as uncertain predictions are rejected; an OOD test uses entirely unseen people/phantoms, objects, skin batches, and fault states.
 
 \subsection{Power and sample-size strategy}
 Because the pilot has no quantitative variance estimate, an honest numerical power calculation is not yet possible. Conduct a separate variance-estimation study whose observations are not reused for confirmatory testing. Then simulate the complete grouped design using the observed object/day covariance and choose sample size for at least 90\% probability that the lower 95\% confidence bound of macro-$F_1$ exceeds 0.50 when the true macro-$F_1$ is 0.75. Publish the simulation code and seed before the confirmatory run.
@@ -358,6 +457,8 @@ Array mutual coupling & Spatial ghosts and channel interference & 3 & 4 & 4 & Se
 \end{tabularx}
 \end{table*}
 
+Three additional coupled hazards require explicit tests. First, force can be correct while pressure is wrong because the inferred contact area is wrong; the pressure head must therefore be disabled whenever area is unobservable. Second, an elastomer can exhibit path-dependent output, so a model trained only on increasing load may underestimate or overestimate unloading force. Third, a high-confidence neural prediction can occur outside the training domain. Skin-batch identity, temperature, diagnostic residuals, ensemble disagreement, and sensor-health flags must participate in an independent validity gate.
+
 The most dangerous error is interpretive: a visually compelling waveform or image can be mistaken for an object ``shape.'' A single coil or single TX--RX pair does not contain sufficient independent spatial measurements for shape reconstruction. Tomographic imaging requires multiple known excitation/receive geometries, a forward model, regularized inversion, and phantom validation \citep{dingley2023emskin}. The optional visual map in the demonstrator should therefore be labeled a time--feature history until an array and reconstruction model exist.
 
 \section{Discussion}
@@ -367,20 +468,22 @@ The pilot supports the narrow conclusion that the combined hardware/software cha
 The qualitative ranking of gated burst, hybrid, and continuous excitation is likewise provisional. A true conventional pulse-induction metal detector uses a high-current pulse, receiver protection, a blanking interval, and decay sampling after switch-off. A browser audio burst is band-limited, AC-coupled, and low voltage; it is more accurately described as \emph{PI-like gated excitation}. Its apparent advantage may reflect improved baseline rejection or codec behavior rather than classical pulse-induction physics.
 
 \subsection{Path to a distributed robotic skin}
-Development should proceed from one characterized element to an array. First establish repeatability and a causal signal path with rigid fixtures. Then test encapsulation and bending, measure mutual-coupling matrices, and introduce sequential scanning. A skin cell may ultimately combine (i) a microcoil impedance channel, (ii) a capacitive proximity electrode, and (iii) an independent force element. Frequency diversity and sensor fusion can then be evaluated with uncertainty-aware models \citep{xu2023ai}. Energy, wiring, and local processing are decisive at robot scale; prior e-skin research shows that distributed coverage can impose substantial system costs \citep{garcia2019energy,someya2019smart}.
+Development should proceed from one characterized element to an array. First establish repeatability and a causal signal path with rigid fixtures. Then test encapsulation and bending, measure mutual-coupling matrices, and introduce sequential scanning. If coil deformation alone proves sufficiently informative, one printed or wound element could span pre-contact and touch with minimal wiring; if it does not, a cell may combine (i) a microcoil impedance channel, (ii) a capacitive proximity electrode, and (iii) an independent force element. Frequency diversity and sensor fusion can then be evaluated with uncertainty-aware models \citep{xu2023ai}. Energy, wiring, and local processing are decisive at robot scale; prior e-skin research shows that distributed coverage can impose substantial system costs \citep{garcia2019energy,someya2019smart}.
 
-For gentle contact, the \SIrange{0}{15}{\centi\metre} estimate must be a supervisory cue, not a safety-rated measurement. The robot should reduce velocity on conservative proximity thresholds and rely on certified force/torque limits, collision detection, and emergency stopping. No experiment in this paper authorizes direct human deployment.
+Whole-body coverage is especially relevant to service and personal-care robots operating in homes, schools, hospitals, and care facilities. A distributed field can indicate which body region is approaching contact, reduce motion before impact, measure subsequent interaction force, and detect sustained or concentrated pressure. Children, older adults, patients, and people with sensory, cognitive, or mobility limitations are not interchangeable test populations: anatomy, movement, communication, assistive devices, clothing, and acceptable-risk assumptions differ. Initial development should use standardized indenters and tissue phantoms, then consented adults under ethics oversight; studies involving vulnerable participants require a separate justification, safeguarding plan, stopping criteria, and competent supervision.
+
+For gentle contact, the \SIrange{0}{15}{\centi\metre} estimate and learned pressure output must be supervisory cues, not safety-rated measurements. The robot should reduce velocity on conservative proximity thresholds and rely on independent force/torque limits, collision detection, emergency stopping, and application-specific risk reduction. ISO~13482 addresses personal-care robots and physical human--robot contact, with application guidance in ISO/TR~23482-2 \citep{iso13482,isotr23482}. A robot that is itself a medical electrical device may instead fall within medical-device requirements such as IEC~80601-2-78 for rehabilitation, assessment, compensation, or alleviation robots \citep{iec80601}. Applicable standards and regulation depend on intended use and jurisdiction; sensor accuracy alone never establishes compliance. No experiment in this paper authorizes direct human deployment.
 
 \subsection{Limitations}
-This study has five central limitations. First, there is no controlled raw pilot dataset. Second, the audio interface and coil electrical parameters were not fully characterized during the exploratory phase. Third, target geometry and operator position were not controlled. Fourth, the platform's nearest-centroid model is a visualization aid, not a validated classifier. Fifth, browser scheduling and commodity audio processing limit metrological traceability. These limitations are made explicit so that future results can be judged against a fixed protocol rather than retrospective interpretation.
+This study has eight central limitations. First, there is no controlled raw pilot dataset. Second, the audio interface and coil electrical parameters were not fully characterized during the exploratory phase. Third, target geometry and operator position were not controlled. Fourth, the platform's nearest-centroid model is a visualization aid, not a validated classifier. Fifth, browser scheduling and commodity audio processing limit metrological traceability. Sixth, no load-cell, displacement, or contact-area reference has yet been synchronized with the coil, so contact-force and pressure sensing remain hypotheses. Seventh, a scalar cell cannot identify arbitrary contact area, shear force, or pressure distribution without an array or additional modality. Eighth, no training corpus yet represents people, skin batches, temperatures, clothing, assistive devices, ageing, or faults at the breadth required for human-facing deployment. These limitations are made explicit so that future results can be judged against a fixed protocol rather than retrospective interpretation.
 
 \section{Open Science, Ethics, and Safety}
 The software, hardware notes, experimental protocol, and LaTeX source are maintained in the public project repository \citep{sensoryskin2026software}. A confirmatory release should add immutable raw PCM or losslessly encoded samples, TX-current traces, session metadata, target photographs/dimensions, calibration records, exclusion logs, and analysis scripts. Each figure derived from data should be generated from a versioned script and manifest.
 
-Human-hand experiments constitute interaction with a person even when no identifying data are intended. Before formal study, obtain the applicable ethics determination or approval, informed consent, and a data-management plan. Electrical isolation, leakage current, surface temperature, insulation integrity, and fault behavior must be independently reviewed. The system must never connect a power-amplifier output directly to a microphone input and must not serve as the sole protective measure in human--robot interaction.
+Human-hand experiments constitute interaction with a person even when no identifying data are intended. Before formal study, obtain the applicable ethics determination or approval, informed consent, and a data-management plan. Do not recruit children, cognitively impaired participants, frail older adults, or patients merely to improve model diversity during feasibility development; use phantoms and low-risk adult studies first. Any later inclusion must be scientifically necessary, independently approved, accessible to the participant, and designed around assent/consent, guardianship where applicable, privacy, fatigue, skin fragility, infection control, and immediate withdrawal. Electrical isolation, leakage current, surface temperature, insulation integrity, cleanability, and fault behavior must be independently reviewed. The system must never connect a power-amplifier output directly to a microphone input and must not serve as the sole protective measure in human--robot interaction.
 
 \section{Conclusion}
-Audio-frequency microcoils are a plausible research direction for compliant robotic skin, supported by a wider literature on inductive, magnetic, capacitive, and multimodal tactile systems. Sensory Skin Lab lowers the barrier to investigating that direction by offering local browser acquisition, transparent features, empirical calibration, and structured logging. Its exploratory pilot revealed reproducible-looking environmental sensitivity but also a decisive warning: response persisted when the physical output path was absent, leaving electronic and capacitive confounds unresolved. The appropriate next step is therefore not a stronger claim or amplifier, but a controlled causal experiment with isolated TX/RX chains, dummy loads, fixed geometry, randomized held-out targets, and locked analysis. Only after that test can proximity accuracy, material-response discrimination, array imaging, or safe robotic integration be responsibly claimed.
+Audio-frequency microcoils are a plausible research direction for compliant robotic skin, supported by a wider literature on inductive, magnetic, capacitive, and multimodal tactile systems. Sensory Skin Lab lowers the barrier to investigating that direction by offering local browser acquisition, transparent features, empirical calibration, and structured logging. The proposed extension treats the final approach, first contact, elastomer compression, force, area, and pressure as one gated perception problem and defines a compact uncertainty-aware multitask model suitable for distributed low-cost cells. Its exploratory pilot revealed reproducible-looking environmental sensitivity but also a decisive warning: response persisted when the physical output path was absent, leaving electronic and capacitive confounds unresolved. The appropriate next step is therefore not a stronger claim or amplifier, but a controlled causal experiment with isolated TX/RX chains, dummy loads, instrumented indentation, multiple skin batches, randomized held-out targets, and locked analysis. Only after that test can proximity accuracy, material-response discrimination, force/pressure estimation, array imaging, or safe robotic integration be responsibly claimed.
 
 \section*{Author Contributions}
 Francisco Angulo de Lafuente: concept, exploratory investigation, system requirements, software validation, methodology, and manuscript review. The software and manuscript were developed with AI-assisted coding and drafting; the named author remains responsible for experimental accuracy, source verification, and all claims.
@@ -399,7 +502,7 @@ No external funding is claimed. The author acknowledges the open research commun
 
 \appendix
 \section{Minimum Session Metadata}
-Every exported session should contain: UTC timestamp; software commit; browser and operating system; input/output device labels and channel mapping; requested and realized sample rate; disabled/enabled audio enhancements; coil identifier and measured $R$, $L$, and self-resonant frequency; TX waveform, frequency, duty cycle, and measured current; preamplifier gain and filters; fixture distance/orientation; target identifier, class, material, dimensions, and temperature; room temperature/humidity; operator location; grounding state; baseline quality; clipping fraction; exclusion code; and randomized trial index.
+Every exported session should contain: UTC timestamp; software and model commits; training-data manifest hash; browser and operating system; input/output device labels and channel mapping; requested and realized sample rate; disabled/enabled audio enhancements; coil identifier and measured $R$, $L$, and self-resonant frequency; skin formulation, batch, cure, thickness, hardness, compression curve, bend state, temperature, and cycle count; TX waveform, frequency, duty cycle, and measured current; preamplifier gain and filters; fixture distance/orientation; indenter identity and area; load-cell and displacement calibration identifiers; target identifier, class, material, dimensions, and temperature; room temperature/humidity; operator location; grounding state; baseline quality; clipping fraction; exclusion code; OOD/validity flags; and randomized trial index.
 
 \section{Prospective Analysis Pseudocode}
 \begin{enumerate}
@@ -410,6 +513,8 @@ Every exported session should contain: UTC timestamp; software commit; browser a
 \item Freeze parameters; evaluate exactly once on held-out objects.
 \item Bootstrap at the object level, not the audio-frame level.
 \item Run label permutation and dummy-load leakage tests.
+\item Evaluate force, area, pressure, hysteresis, creep, and prediction-interval coverage.
+\item Run grouped OOD tests across people/phantoms, objects, skin batches, temperatures, and faults.
 \item Generate figures and tables from the locked result bundle.
 \item Report all planned endpoints, including null and adverse results.
 \end{enumerate}
@@ -426,6 +531,8 @@ Exploratory observation & ``The displayed receive metric changed when a hand app
 Controlled mechanism & ``The isolated RX response differed from dummy-load controls.'' & ``The mechanism is uniquely inductive'' without modal controls.\\
 Held-out classification & ``Macro-$F_1$ was $x$ [CI] on unseen objects.'' & Training accuracy or frame-wise random splits.\\
 Calibrated proximity & ``Median error was $x$ cm over 0--15 cm for specified targets.'' & Universal distance range.\\
+Calibrated contact force & ``Force NRMSE was $x$ over the stated range, skin and temperature.'' & Universal pressure or safe-touch claim.\\
+Calibrated pressure & ``Average pressure error was $x$ for measured contact area.'' & Pressure map from one scalar coil or unknown area.\\
 Safety evidence & ``The sensor contributed to a validated safety architecture.'' & ``Safe for human contact'' from sensing accuracy alone.\\
 \bottomrule
 \end{tabularx}

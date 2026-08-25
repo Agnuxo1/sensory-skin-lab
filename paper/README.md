@@ -11,7 +11,7 @@ pdflatex main.tex
 pdflatex main.tex
 ```
 
-The manuscript distinguishes qualitative pilot observations from planned confirmatory experiments. No quantitative performance claim is made without a traceable dataset.
+The manuscript distinguishes qualitative pilot observations from planned confirmatory experiments. It includes a proposed uncertainty-aware multitask system for target-response classification, 0--15 cm proximity, contact detection, normal force, contact area, and average pressure, together with an instrumented calibration protocol. No quantitative performance claim is made without a traceable dataset.
 
 ## Submission note
 
