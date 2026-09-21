@@ -6,7 +6,7 @@ Determine whether the sensor response contains repeatable information that separ
 
 ## Controlled variables
 
-Fix the coil, cable, interface, USB port, sample rate, gain, drive, frequency, operator position, target orientation, approach path, room, and grounding. Move targets with a non-conductive fixture so the operator's body is not the dominant variable.
+Fix the coil, cable, interface, USB port, sample rate, gain, drive, frequency, pulse settings, operator position, target orientation, approach path, room, and grounding. If any acquisition setting or device changes during a session, discard the previous baseline and reference profiles before collecting new data. Move targets with a non-conductive fixture so the operator's body is not the dominant variable.
 
 ## Procedure
 
