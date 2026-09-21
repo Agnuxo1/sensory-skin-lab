@@ -84,6 +84,7 @@ export default function Home() {
   const profilesRef = useRef<Profile[]>([]);
   const anchorsRef = useRef<DistanceAnchor[]>([]);
   const thresholdRef = useRef(threshold);
+  const calibrationSignatureRef = useRef<string | null>(null);
 
   const refreshDevices = useCallback(async () => {
     if (!navigator.mediaDevices?.enumerateDevices) return;
@@ -104,8 +105,32 @@ export default function Home() {
   useEffect(() => { anchorsRef.current = distanceAnchors; }, [distanceAnchors]);
   useEffect(() => { thresholdRef.current = threshold; }, [threshold]);
 
+  const resetCalibration = useCallback(() => {
+    captureRef.current = null;
+    setCaptureLabel("");
+    setProfiles([]);
+    setDistanceAnchors([]);
+    setDistanceStep(0);
+    processorRef.current?.port.postMessage({ type: "clear-baseline" });
+    if (running) setStatus("Calibration invalidated — capture a new baseline");
+  }, [running]);
+
   const config = useMemo(() => ({ mode, frequency, power, gain, threshold, pulseRate, pulseWidth, listenDelay }), [mode, frequency, power, gain, threshold, pulseRate, pulseWidth, listenDelay]);
+  const calibrationSignature = useMemo(
+    () => JSON.stringify({ inputId, outputId, mode, frequency, power, gain, threshold, pulseRate, pulseWidth, listenDelay }),
+    [inputId, outputId, mode, frequency, power, gain, threshold, pulseRate, pulseWidth, listenDelay],
+  );
+
   useEffect(() => { processorRef.current?.port.postMessage({ type: "config", config }); }, [config]);
+  useEffect(() => {
+    if (calibrationSignatureRef.current === null) {
+      calibrationSignatureRef.current = calibrationSignature;
+      return;
+    }
+    if (calibrationSignatureRef.current === calibrationSignature) return;
+    calibrationSignatureRef.current = calibrationSignature;
+    resetCalibration();
+  }, [calibrationSignature, resetCalibration]);
 
   const classify = useCallback((m: Metrics) => {
     return inferMaterial(m, profiles, threshold);
@@ -141,8 +166,9 @@ export default function Home() {
     if (contextRef.current && contextRef.current.state !== "closed") await contextRef.current.close();
     if (audioRef.current) { audioRef.current.pause(); audioRef.current.srcObject = null; }
     contextRef.current = null; streamRef.current = null; processorRef.current = null;
+    resetCalibration();
     setRunning(false); setRecording(false); setMetrics(EMPTY); setStatus("Instrument stopped — drive output is zero");
-  }, []);
+  }, [resetCalibration]);
 
   useEffect(() => () => { void stop(); }, [stop]);
 
@@ -222,7 +248,7 @@ export default function Home() {
         <section className="panel setup-panel"><PanelTitle index="01" title="Signal chain" meta="I/O" />
           <label className="select-label">SENSOR INPUT<select value={inputId} onChange={e => setInputId(e.target.value)} disabled={running}><option value="">System default input</option>{inputDevices.map(d => <option key={d.deviceId} value={d.deviceId}>{d.label}</option>)}</select></label>
           <label className="select-label">EXCITATION OUTPUT<select value={outputId} onChange={e => setOutputId(e.target.value)} disabled={running}><option value="">System default output</option>{outputDevices.map(d => <option key={d.deviceId} value={d.deviceId}>{d.label}</option>)}</select></label>
-          <div className="mode-grid">{(["passive", "vlf", "burst"] as Mode[]).map(item => <button key={item} className={mode === item ? "active" : ""} onClick={() => { setMode(item); processorRef.current?.port.postMessage({ type: "clear-baseline" }); }}><span>{item === "passive" ? "RX" : item.toUpperCase()}</span><small>{item === "passive" ? "PASSIVE" : item === "vlf" ? "CONTINUOUS" : "PI-LIKE"}</small></button>)}</div>
+          <div className="mode-grid">{(["passive", "vlf", "burst"] as Mode[]).map(item => <button key={item} className={mode === item ? "active" : ""} onClick={() => setMode(item)}><span>{item === "passive" ? "RX" : item.toUpperCase()}</span><small>{item === "passive" ? "PASSIVE" : item === "vlf" ? "CONTINUOUS" : "PI-LIKE"}</small></button>)}</div>
           <div className="primary-actions"><button className={running ? "stop" : "start"} onClick={() => void (running ? stop() : start())}>{running ? "STOP ACQUISITION" : "START ACQUISITION"}</button><button onClick={calibrate} disabled={!running}>ZERO / BASELINE</button></div>
         </section>
         <section className="panel controls-panel"><PanelTitle index="02" title="Excitation & gain" meta="CONTROL" />
