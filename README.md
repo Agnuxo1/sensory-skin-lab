@@ -23,7 +23,7 @@ The application is a research demonstrator. It does **not** prove that a coil ca
 
 The classifier is intentionally simple and transparent. It computes a feature vector from absolute amplitude change, phase displacement, transient change, and combined response, then compares the live vector with user-recorded centroids. Confidence is a relative separation score between the nearest and second-nearest references; it is not a probability.
 
-The distance display interpolates response strength between captured anchors. It is target-specific and may not be monotonic. Recalibrate whenever the coil, cable position, drive, gain, target, or environment changes.
+The distance display interpolates response strength between captured anchors. It is target-specific and may not be monotonic. The interface automatically discards the baseline, material profiles, and distance anchors whenever the signal chain or acquisition parameters change. Recalibrate whenever the coil, cable position, drive, gain, target, or environment changes.
 
 ## Hardware concept
 
