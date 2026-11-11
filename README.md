@@ -7,6 +7,10 @@ Sensory Skin Lab is an experimental browser instrument for studying thin microco
 
 The application is a research demonstrator. It does **not** prove that a coil can identify a material, guarantee a 15 cm range, or provide certified safe human contact. Those capabilities must be established experimentally for each sensor, geometry, analogue front end, environment, and target population.
 
+<!-- impact-note:start -->
+<sub><strong>Efficiency and practical value.</strong> The browser instrument combines excitation, local signal processing, baseline capture and CSV logging in one reproducible microcoil experiment workflow. Transparent reference comparisons and automatic recalibration after signal-chain changes help researchers identify invalid comparisons before extending a study. Its <a href="#scientific-interpretation">documented interpretation</a> supports accessible sensor prototyping; material identification, range and contact performance remain experimental questions.</sub>
+<!-- impact-note:end -->
+
 ## What it does
 
 - Passive RX, continuous VLF, and gated burst/PI-like excitation modes
