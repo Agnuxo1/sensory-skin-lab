@@ -1,0 +1,23 @@
+{
+  "benchmark": "GuardCell deterministic policy (synthetic simulation)",
+  "seed": 2601113,
+  "samples": 1000,
+  "unsafe_motion_count": 0,
+  "false_stop_count_for_unambiguous_safe_frames": 0,
+  "simulated_actions": {
+    "EMERGENCY_STOP": 445,
+    "HOLD": 324,
+    "ROUTE_REWORK": 156,
+    "ROUTE_GOOD": 75
+  },
+  "policy_cpu_tick_p50_ms": 1.2615,
+  "policy_cpu_tick_p95_ms": 1.35,
+  "what_was_not_measured": [
+    "Vision-language model latency or accuracy",
+    "Physical robot actuation latency or reliability",
+    "Human detection under real-world lighting or occlusion",
+    "Safety certification or injury-risk reduction",
+    "Energy, CO2 emissions or water consumption"
+  ],
+  "result": "PASS"
+}
