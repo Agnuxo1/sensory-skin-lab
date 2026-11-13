@@ -91,3 +91,14 @@ The [Sensory Skin Lab](https://github.com/Agnuxo1/sensory-skin-lab) is related i
 ## Author and license
 
 Francisco Angulo de Lafuente — [ORCID 0009-0001-1634-7063](https://orcid.org/0009-0001-1634-7063). Original code MIT-licensed; see `LICENSE`. Google Gemma 3 and Ollama retain their respective model/software terms and are not redistributed here.
+
+## Public Kaggle verification and demo media
+
+- [Executed Kaggle Notebook (27 tests, 1,000 synthetic scenarios)](https://www.kaggle.com/code/franciscoangulo/guardcell-safe-vlm-robot-handoffs-2026)
+- [Submission cover image](assets/cover.png)
+- [34-second H.264 simulation video](assets/guardcell_simulation_demo.mp4)
+- [Reproducibility and Kaggle result log](docs/VERIFICATION.md)
+
+**Media integrity:** All visuals depict an explicitly synthetic workcell and synthetic VLM fixtures. The clip is not footage of a real robot or proof that the optional Gemma 3 adapter was exercised.
+
+The **public notebook is published**, but an official Kaggle hackathon entry additionally requires submitting the Writeup, attaching the public video/notebook/project link and completing the Media Gallery before the competition deadline.
